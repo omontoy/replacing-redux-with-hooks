@@ -1,15 +1,31 @@
-import React, { useContext } from "react";
+// Context API
+// import { useContext } from "react";
+// import { ProductsContext } from "../context/products-context";
+
+// Redux
+// import { useSelector } from "react-redux";
+
+// CUSTOM HOOK useStore
+import { useStore } from "../hooks-store/store";
 
 import ProductItem from "../components/Products/ProductItem";
-import { ProductsContext } from "../context/products-context";
 import "./Products.css";
 
 const Products = (props) => {
-  const productsCtx = useContext(ProductsContext);
+  // Context API
+  // const productsCtx = useContext(ProductsContext);
+  // const productList = productsCtx.products
+
+  // Redux
+  // const productList = useSelector((state) => state.shop.products);
+
+  // CUSTOM HOOK useStore
+  const state = useStore()[0];
+  const productList = state.products;
 
   return (
     <ul className="products-list">
-      {productsCtx.products.map((prod) => (
+      {productList.map((prod) => (
         <ProductItem
           key={prod.id}
           id={prod.id}
